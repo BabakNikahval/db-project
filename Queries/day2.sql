@@ -68,5 +68,33 @@ SELECT PHONE_NUMBER FROM EMPLOYEES WHERE PHONE_NUMBER LIKE '%121%';--9
 -- find out phone numbers with .121. in the middle
 SELECT PHONE_NUMBER FROM EMPLOYEES WHERE PHONE_NUMBER LIKE '%.121.%';--8
 
+-- you can optionally give the Nike Name
+-- using the KEYWORD AS right after column Name
+-- Display all FIRST_NAME , SALARY in Employee table
+--Modify the column name for Salary in result to Money
+SELECT FIRST_NAME , SALARY AS MONEY
+FROM EMPLOYEES;
+
+-- Display all FIRST_NAME , LAST_NAME in Employee table
+--Modify the column name for AS BELOW
+--FIRST_NAME -> GIVEN_NAME     LAST_NAME-> FAMILY_NAME
+SELECT FIRST_NAME  AS GIVEN_NAME , LAST_NAME AS GIVEN_FAMILY_NAME FROM EMPLOYEES ;
+
+
+-- Display all FIRST_NAME , LAST_NAME in Employee table
+--Modify the column name for AS BELOW
+--FIRST_NAME -> GIVEN_NAME     LAST_NAME-> FAMILY_NAME
+-- does not have _ with use ""
+SELECT FIRST_NAME AS "GIVEN NAME" , LAST_NAME AS "FAMILY NAME " FROM EMPLOYEES ;
+
+
+-- CONCATENATION in SQL use DOUBLE PIPE || (this is not OR)
+-- concatenate FULL_NAME ,LAST_NAME , FULL_NAME for Employee
+-- use '' as space
+SELECT FIRST_NAME,LAST_NAME,FIRST_NAME || ' ' || LAST_NAME FROM EMPLOYEES;
+
+
+
+
 
 
