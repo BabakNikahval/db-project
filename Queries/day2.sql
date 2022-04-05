@@ -203,10 +203,77 @@ WHERE UPPER(FIRST_NAME) LIKE '%d%';
 
 -- find out SALARY and daily salary of EMPLOYEE
 SELECT SALARY ,
-       ROUND( SALARY /30) ,
-       ROUND(SALARY / 30 ,5)
+       ROUND( SALARY / 30),
+       ROUND(SALARY / 30 , 5)
 FROM EMPLOYEES ;
 
+
+--you can use single row anywhere
+-- including in select column list, condition, order by
+SELECT FIRST_NAME
+FROM EMPLOYEES
+ORDER BY  LENGTH(FIRST_NAME) DESC ;
+
+
+-- multi row FUNCTION | GROUP FUNCTION | AGGREGATE FUNCTION
+-- COUNT , Max , MIN , SUM , AVG
+-- means count everything from employee table and count all the FIRST name from Employee table
+-- when use with * it will count all the ROWS count
+SELECT COUNT(*) , COUNT(FIRST_NAME)
+FROM EMPLOYEES;
+
+
+--count commission-pct  with the value not null
+-- means we have 35  employee with commission-pct value not null
+SELECT COUNT(COMMISSION_PCT)
+FROM EMPLOYEES;--35
+
+-- I want to count how many employee work in department id number 90
+-- get the employee count for EMPLOYMENT_ID of 90
+SELECT *
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 90 ;
+
+
+--find out the MAX Salary in EMPLOYEE table
+SELECT MAX(SALARY)
+FROM EMPLOYEES;--24000
+
+----find out the MAX Salary in EMPLOYEE table Exclude 24000
+SELECT SALARY FROM EMPLOYEES WHERE SALARY<> 24000;
+
+--MIN
+-- find out minimum SALARY from Employee table
+SELECT MIN(SALARY) FROM EMPLOYEES;--2100
+
+
+-- find out minimum salary exclude salary 2100
+SELECT MIN(SALARY) FROM EMPLOYEES WHERE SALARY <> 2100;--2200
+
+
+-- GET the SUM of ENTIRE EMPLOYEE SALARY
+SELECT SUM(SALARY) FROM EMPLOYEES;--691416
+
+-- Get sum of the salary for DEPARTMENT_ID 90
+SELECT SUM(SALARY) FROM EMPLOYEES WHERE DEPARTMENT_ID =90;--58000
+
+-- AVG
+-- FIND OUT AVERAGE SALARY OF ALL EMPLOYEES
+SELECT AVG(SALARY) FROM EMPLOYEES;
+
+
+-- FIND OUT AVERAGE SALARY OF ALL EMPLOYEES with  round number
+-- round accept one parameter with all disimal numbers or two parameters with exact disimal number
+SELECT AVG(SALARY) , ROUND(AVG(SALARY),3 )FROM EMPLOYEES;
+
+
+--ALL IN ONE SHOT
+SELECT COUNT(*) AS "EMPLOYEE COUNT",
+       MAX(SALARY) AS "HIGHERST SALARY",
+       MIN(SALARY) AS "LOWEST SALARY",
+       SUM(SALARY) AS "SUM OF ALL SALARY ",
+       AVG(SALARY) AS "AVERAGE SALARY"
+FROM EMPLOYEES;
 
 
 
